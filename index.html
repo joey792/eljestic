@@ -144,14 +144,13 @@
         /* Buttons */
         .button {
           display: inline-flex; align-items: center; justify-content: center;
-          border: 2px solid var(--accent-pink); color: white; background: transparent;
+          border: 2px solid teal; color: white; background: teal;
           padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: 500;
           transition: all 0.3s ease;
-          background-color: var(--accent-pink);
         }
-        .button:hover, .button:focus { background: var(--accent-pink); color: var(--bg); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-        .button.primary { background: var(--accent-pink); color: var(--bg); }
-        .button.primary:hover { background: #0c7cd5; border-color: #0c7cd5; }
+        .button:hover, .button:focus { background: #0c7cd5; border-color: #0c7cd5; color: var(--bg); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .button.primary { background: var(--accent-pink); color: var(--bg); border-color: var(--accent-pink); }
+        .button.primary:hover { background: #e55aa3; border-color: #e55aa3; }
 
         /* Video/Banner Section */
         .banner-section { 
@@ -170,54 +169,43 @@
         .banners-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .banner-item { background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue)); color: var(--bg); border-radius: 12px; height: 200px; display: flex; align-items: center; justify-content: center; color: var(--bg); font-weight: bold; }
 
-     /* Image Slider Section */
-.slider-section {
-  padding: 80px 20px;
-  text-align: center;
-  background: var(--bg);
-  width: 100%;
-  max-width: none;
-  margin: 0;
-}
+        /* Image Slider Section */
+        .slider-section {
+          padding: 80px 20px;
+          text-align: center;
+          background: var(--bg);
+          width: 100%;
+          max-width: none;
+          margin: 0;
+        }
 
-.slider-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  overflow: hidden;
-}
+        .slider-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 30px;
+          overflow: hidden;
+        }
 
-.slider {
-  grid-column: 1 / -1;
-  display: flex;
-  width: 500%;
-  animation: slide 20s infinite;
-}
+        .slider {
+          grid-column: 1 / -1;
+          display: flex;
+          width: 500%;
+          animation: slide 20s infinite;
+        }
 
-.slider img {
-  width: 20%;
-  height: 700px;
-  object-fit: cover;
-  display: block;
-  border: 2px solid var(--accent-blue);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
+        .slider img {
+          width: 20%;
+          height: 700px;
+          object-fit: cover;
+          display: block;
+          border: 2px solid var(--accent-blue);
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: var(--shadow);
+        }
 
-@keyframes slide {
-  0% { transform: translateX(0); }
-  20% { transform: translateX(0); }
-  25% { transform: translateX(-20%); }
-  45% { transform: translateX(-20%); }
-  50% { transform: translateX(-40%); }
-  70% { transform: translateX(-40%); }
-  75% { transform: translateX(-60%); }
-  95% { transform: translateX(-60%); }
-  100% { transform: translateX(-80%); }
-}
         @keyframes slide {
           0% { transform: translateX(0); }
           20% { transform: translateX(0); }
@@ -347,6 +335,20 @@
           object-fit: contain;
           display: block;
         }
+
+        /* Careers Section */
+        .careers-section {
+          padding: 80px 0;
+          text-align: center;
+          background: var(--bg);
+          width: 100%;
+          max-width: none;
+          margin: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .careers-section h2 { font-size: 2.5rem; margin: 0 0 20px; color: var(--text); font-family: var(--font-heading); }
+        .careers-actions { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 40px 0; }
 
         /* CTA Section */
         .cta-section {
@@ -497,7 +499,7 @@
           .about-badges { gap: 15px; }
           .values { max-width: 500px; padding-left: 15px; }
           .map-iframe { height: 350px; }
-          .banner-section, .active-section, .cta-section, .about-section, .map-section, .slider-section { padding-left: 25px; padding-right: 25px; }
+          .banner-section, .active-section, .cta-section, .about-section, .map-section, .slider-section, .careers-section { padding-left: 25px; padding-right: 25px; }
           .about-profile { flex-direction: column; gap: 20px; }
           .about-profile-card, .about-profile-image {
             width: 100%;
@@ -512,7 +514,7 @@
         @media (max-width: 767px) {
           .container { padding: 0 15px; }
           .hero { padding: 60px 15px; margin-top: 30px; }
-          .banner-section, .active-section, .cta-section, .about-section, .slider-section { padding: 60px 15px; }
+          .banner-section, .active-section, .cta-section, .about-section, .slider-section, .careers-section { padding: 60px 15px; }
           .map-section { padding: 60px 15px; }
           .section { padding: 60px 0; }
           .hero h1 { font-size: 2.5rem; font-family: var(--font-heading); }
@@ -583,7 +585,7 @@
           .top-bar-content { flex-direction: column; gap: 10px; text-align: center; }
           .contact-info span { margin-right: 0; display: block; }
           .top-bar-links { gap: 15px; }
-          .hero-actions { gap: 15px; }
+          .hero-actions, .careers-actions { gap: 15px; }
           .about-badges { flex-direction: column; gap: 10px; align-items: center; }
           .values { max-width: 400px; padding-left: 12px; gap: 12px; }
           .map-iframe { height: 300px; }
@@ -617,14 +619,14 @@
           .top-bar { font-size: 13px; padding: 8px 0; }
           .top-bar-links { gap: 10px; }
           .top-bar-links a { font-size: 0.9rem; }
-          .hero-actions { flex-direction: column; gap: 10px; width: 100%; }
+          .hero-actions, .careers-actions { flex-direction: column; gap: 10px; width: 100%; }
           .button { width: 100%; padding: 12px 20px; }
           .service-card, .active-card, .featured-card { padding: 15px; margin: 0 5px; }
           .service-title, .active-title { font-size: 1.3rem; font-family: var(--font-heading); }
           .about-badges .badge { padding: 8px 16px; font-size: 0.9rem; }
           .values { max-width: 350px; padding-left: 10px; gap: 10px; }
           .values li { font-size: 0.9rem; }
-          .banner-section, .active-section, .cta-section, .about-section, .slider-section { padding: 50px 15px; }
+          .banner-section, .active-section, .cta-section, .about-section, .slider-section, .careers-section { padding: 50px 15px; }
           .map-section { padding: 50px 15px; }
           .map-container { padding: 15px; }
           .map-card h3 { font-size: 1.3rem; font-family: var(--font-heading); }
@@ -649,7 +651,7 @@
           body { font-size: 15px; line-height: 1.5; font-family: var(--font-body); }
           .container { padding: 0 15px; }
           .hero { padding: 40px 15px; margin-top: 10px; }
-          .banner-section, .active-section, .cta-section, .about-section, .slider-section { padding: 40px 15px; }
+          .banner-section, .active-section, .cta-section, .about-section, .slider-section, .careers-section { padding: 40px 15px; }
           .map-section { padding: 40px 15px; }
           .section { padding: 40px 0; }
           .hero h1 { font-size: 1.8rem; line-height: 1.1; margin-bottom: 15px; font-family: var(--font-heading); }
@@ -672,7 +674,7 @@
           .contact-info span { margin: 0; font-size: 12px; display: block; text-align: center; }
           .top-bar-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
           .top-bar-links a { font-size: 0.85rem; }
-          .hero-actions { flex-direction: column; gap: 8px; width: 100%; }
+          .hero-actions, .careers-actions { flex-direction: column; gap: 8px; width: 100%; }
           .button { width: 100%; padding: 10px 15px; font-size: 0.9rem; }
           .service-card, .active-card, .featured-card { padding: 12px; margin: 0 0; border-radius: 8px; }
           .service-title, .active-title { font-size: 1.2rem; margin-bottom: 10px; font-family: var(--font-heading); }
@@ -734,7 +736,6 @@
         <div class="container top-bar-content">
             <div class="contact-info">
                 <span>+1 246 416-4875</span>
-                      
             </div>
             <div class="top-bar-links">
                 <a href="#services">Find a Caregiver</a>
@@ -769,7 +770,7 @@
             <p class="lead">Your loved ones deserve the best care in a familiar environment</p>
             <div class="hero-actions">
                 <a href="#services" class="button primary">Explore Services</a>
-                <a href="#contact" class="button">Speak with our team</a>
+                <a href="#contact" class="button primary">Speak with our team</a>
             </div>
             <div class="hero-stats">
                 <div class="stat">
@@ -809,17 +810,17 @@
             </div>
         </section>
 
-      <section class="slider-section section container">
-    <div class="slider-container">
-        <div class="slider">
-            <img src="care1.jpeg" alt="Care Image 1">
-            <img src="care2.jpeg" alt="Care Image 2">
-            <img src="care3.jpeg" alt="Care Image 3">
-            <img src="care4.jpeg" alt="Care Image 4">
-            <img src="care5.jpeg" alt="Care Image 5">
-        </div>
-    </div>
-</section>
+        <section class="slider-section section container">
+            <div class="slider-container">
+                <div class="slider">
+                    <img src="care1.jpeg" alt="Care Image 1">
+                    <img src="care2.jpeg" alt="Care Image 2">
+                    <img src="care3.jpeg" alt="Care Image 3">
+                    <img src="care4.jpeg" alt="Care Image 4">
+                    <img src="care5.jpeg" alt="Care Image 5">
+                </div>
+            </div>
+        </section>
 
         <section class="featured-section section container">
             <h2>Featured Testimonials</h2>
@@ -832,7 +833,7 @@ She is a committed, caring, and professional individual who approaches her work 
 
 It was a sad day when Jo informed us that she would be moving on, as the entire family had grown fond of her. Even after her departure, she continued to check in from time to time to ask how my father was doing — a true testament to her dedication and heart.
 
-I can confidently  recommend Jo to any family or organization seeking a reliable, compassionate, and skilled caregiver or nurse. She would be an asset to any team."</p>
+I can confidently recommend Jo to any family or organization seeking a reliable, compassionate, and skilled caregiver or nurse. She would be an asset to any team."</p>
                     <div class="featured-title">– Angella Ward , Client</div>
                 </div>
                 <div class="featured-card">
@@ -840,30 +841,13 @@ I can confidently  recommend Jo to any family or organization seeking a reliable
                     <div class="featured-title">– Micheala Lesley , Family Member</div>
                 </div>
                 <div class="featured-card">
-                    <p class="featured-desc">"I am pleased to provide a reference for Joalann Lesley, who has served as a terminal care
-nurse for my dying mother. During this time, she has consistently demonstrated exceptional
-compassion, professionalism, and expertise in providing end-of-life care. Her ability to connect
-with my mother and me during such challenging moments is truly remarkable. Joalann creates
-a comforting and dignified environment, ensuring that my mother felt respected and cared for,
-while also offering emotional support to loved ones.
-Her deep understanding of palliative care principles and commitment to patient-centered care
-make her an invaluable asset to any healthcare team.
-Joalann possesses outstanding clinical skills, with a keen ability to manage complex
-symptoms and provide tailored care that enhances the quality of life for terminally ill patients.
-She is adept at collaborating with multidisciplinary teams, including physicians, social workers,
-and chaplains, to develop and implement individualized care plans.
-Joalann’s attention to detail and ability to anticipate patient needs have been instrumental in
-maintaining comfort and dignity for my mother. Moreover, she consistently displays empathy
-and patience, foster trust from my mother and me, even in the most emotionally charged
-situations.
-Beyond her clinical expertise, Joalann is a compassionate communicator who excels at
-guiding me through difficult decisions with clarity and sensitivity. She take the time to explain
-medical processes, listen to concerns, and provide reassurance, which has earned them the
-respect and gratitude from me.
-Whilst living in our home on a 24-7 basis, Joalann was sensitive to being in our home. She
-was unobtrusive and minimised her impact on daily life. She was the perfect house guest.
-I wholeheartedly recommend Joalann Lesley for any role in general and terminal care nursing,
-as her skill, empathy, and professionalism make them an exemplary caregiver."</p>
+                    <p class="featured-desc">"I am pleased to provide a reference for Joalann Lesley, who has served as a terminal care nurse for my dying mother. During this time, she has consistently demonstrated exceptional compassion, professionalism, and expertise in providing end-of-life care. Her ability to connect with my mother and me during such challenging moments is truly remarkable. Joalann creates a comforting and dignified environment, ensuring that my mother felt respected and cared for, while also offering emotional support to loved ones.
+Her deep understanding of palliative care principles and commitment to patient-centered care make her an invaluable asset to any healthcare team.
+Joalann possesses outstanding clinical skills, with a keen ability to manage complex symptoms and provide tailored care that enhances the quality of life for terminally ill patients. She is adept at collaborating with multidisciplinary teams, including physicians, social workers, and chaplains, to develop and implement individualized care plans.
+Joalann’s attention to detail and ability to anticipate patient needs have been instrumental in maintaining comfort and dignity for my mother. Moreover, she consistently displays empathy and patience, foster trust from my mother and me, even in the most emotionally charged situations.
+Beyond her clinical expertise, Joalann is a compassionate communicator who excels at guiding me through difficult decisions with clarity and sensitivity. She takes the time to explain medical processes, listen to concerns, and provide reassurance, which has earned them the respect and gratitude from me.
+Whilst living in our home on a 24-7 basis, Joalann was sensitive to being in our home. She was unobtrusive and minimised her impact on daily life. She was the perfect house guest.
+I wholeheartedly recommend Joalann Lesley for any role in general and terminal care nursing, as her skill, empathy, and professionalism make them an exemplary caregiver."</p>
                     <div class="featured-title"> – Dr. W Dixon </div>
                 </div>
             </div>
@@ -928,9 +912,8 @@ as her skill, empathy, and professionalism make them an exemplary caregiver."</p
             <p>We’re here to help. Reach out to discuss your needs and we’ll craft a personalized care plan.</p>
             <div class="contact-actions">
                 <a href="tel:12464164875" class="button primary">Call: +1 246 416-4875</a>
-                <a href="tel:12462847816" class="button primary">Call: +1 246 284-7816</a>
-                <a href="mailto:care@eljestic.com" class="button">Email: care@eljestic.com</a>
-               
+                <a href="whatsapp.html" class="button primary">WhatsApp: +1 246 284-7816</a>
+                <a href="mailto:care@eljestic.com" class="button primary">Email: care@eljestic.com</a>
             </div>
             <p class="note">Barbados • Serving clients at home across the island</p>
         </section>
@@ -940,11 +923,22 @@ as her skill, empathy, and professionalism make them an exemplary caregiver."</p
                 <div class="map-card">
                     <h3>Our Service Area in Barbados</h3>
                     <p>+1 246 416-4875 (Telephone)</p>
-                     <p>+1 246 284-7816 (Whatsapp)</p>
+                    <p>+1 246 284-7816 (Whatsapp)</p>
                     <p>care@eljestic.com</p>
                     <p>Barbados • Serving clients at home across the island</p>
                 </div>
                 <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871914.023249!2d-59.618211!3d13.093121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c26f4a4c9f6a5b5%3A0x4b4e4b4e4b4e4b4e!2sBarbados!5e0!3m2!1sen!2sus!4v1630000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+
+        <section id="careers" class="careers-section section container">
+            <h2>Further Information</h2>
+            <p class="subhead">Explore opportunities to make a difference with El Jestic Home Health Services</p>
+            <div class="careers-actions">
+                <a href="https://form.jotform.com/252805998217065" class="button">Client Service Inquiry Form</a>
+                <a href="https://form.jotform.com/252805519683061" class="button">Employment Contract Form</a>
+                <a href="https://form.jotform.com/252805506508053" class="button">Client Service Agreement</a>
+                <a href="#" class="button">Employee Application Form</a>
             </div>
         </section>
     </main>
@@ -1085,14 +1079,4 @@ as her skill, empathy, and professionalism make them an exemplary caregiver."</p
         }
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
