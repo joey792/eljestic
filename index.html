@@ -3,1494 +3,1103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trident Medical</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>El Jestic Home Health Services</title>
     <style>
-        /* --- CSS Reset & Base Styles --- */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         :root {
-            --primary-color: #FF6200; /* Bright Orange */
-            --secondary-color: #003087; /* Dark Navy Blue */
-            --text-color: #333; /* Dark Gray for text */
-            --text-light: #6c757d; /* Lighter Gray */
-            --white: #FFFFFF; /* White */
-            --light-bg: #f8f9fa; /* Very light gray background */
-            --border-color: #dee2e6;
-            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
+          --bg: #ffffff;
+          --text: #000000;
+          --text-muted: #333333;
+          --accent-pink: #FF69B4;
+          --accent-blue: #1E90FF;
+          --pink-light: #FFC0CB;
+          --blue-light: #B0E0E6;
+          --border: #e0e0e0;
+          --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+          --mono: "Space Mono", monospace;
+          --font-heading: 'Playfair Display', serif;
+          --font-body: 'Poppins', sans-serif;
         }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--white);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden; /* Prevent horizontal overflow */
+          margin: 0;
+          color: var(--text);
+          background: var(--bg);
+          font-family: var(--font-body);
+          line-height: 1.6;
+          text-rendering: optimizeLegibility;
+          overflow-x: hidden;
         }
 
-        /* --- Utility Classes --- */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem; /* Reduced padding for smaller screens */
+        /* Layout */
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .narrow { max-width: 800px; }
+
+        /* Top Bar */
+        .top-bar {
+          background: var(--accent-pink);
+          color: var(--bg);
+          padding: 10px 0;
+          font-size: 14px;
+        }
+        .top-bar-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .contact-info span {
+          margin-right: 20px;
+        }
+        .top-bar-links {
+          display: flex;
+          gap: 20px;
+        }
+        .top-bar-links a {
+          color: var(--bg);
+          text-decoration: none;
+          transition: opacity 0.3s ease;
+        }
+        .top-bar-links a:hover { opacity: 0.8; }
+
+        /* Header */
+        .site-header {
+          position: sticky; top: 0; z-index: 10;
+          background: var(--bg);
+          box-shadow: var(--shadow);
+          transition: box-shadow 180ms ease;
+        }
+        .header-inner {
+          display: flex; justify-content: space-between; align-items: center; padding: 15px 0;
+          position: relative;
+        }
+        .brand {
+          font-family: var(--mono); font-weight: 700; font-size: 24px; text-decoration: none; color: var(--text);
+          letter-spacing: 0.02em;
+        }
+        .brand img {
+          height: auto;
+          max-width: 150px;
+        }
+        .nav-main { display: flex; gap: 30px; list-style: none; padding: 0; margin: 0; }
+        .nav-main a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 160ms ease; }
+        .nav-main a:hover, .nav-main a:focus { color: var(--accent-pink); }
+        .nav-toggle {
+          background: transparent;
+          border: none;
+          display: none;
+        }
+        .cta {
+          font-weight: 600; text-decoration: none; color: var(--bg); background: teal;
+          padding: 12px 24px; border-radius: 30px; transition: all 0.3s ease;
+        }
+        .cta:hover, .cta:focus { background: #0c7cd5; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+        /* Nav Close Button */
+        .nav-close {
+          display: none !important;
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          background: none;
+          border: none;
+          color: var(--accent-pink);
+          font-size: 2rem;
+          font-weight: bold;
+          cursor: pointer;
+          z-index: 1001;
+          line-height: 1;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: var(--border-radius);
-            border: none;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
+        .hero { 
+          width: 100%;
+          height: 100vh;
+          padding: 100px 0 80px;
+          text-align: center;
+          background-color: teal;
+          background-image: url('hero.jpg');
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+          background-attachment: scroll;
+          position: relative;
+          margin: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--white);
+        .hero h1 { font-size: 3.5rem; line-height: 1.2; margin: 0 0 20px; color: black; font-family: var(--font-heading); }
+        .lead { font-size: 1.25rem; color: black; margin: 0 0 30px; }
+        .hero-actions { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 40px 0; }
+        .hero-stats { display: flex; gap: 40px; justify-content: center; margin: 40px 0; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat-number { color: black; font-size: 2.5rem; font-weight: 700; display: block; }
+        .stat-label { color: black; }
+
+        /* Buttons */
+        .button {
+          display: inline-flex; align-items: center; justify-content: center;
+          border: 2px solid teal; color: white; background: teal;
+          padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: 500;
+          transition: all 0.3s ease;
+        }
+        .button:hover, .button:focus { background: #0c7cd5; border-color: #0c7cd5; color: var(--bg); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .button.primary { background: var(--accent-pink); color: var(--bg); border-color: var(--accent-pink); }
+        .button.primary:hover { background: #e55aa3; border-color: #e55aa3; }
+
+        /* Video/Banner Section */
+        .banner-section { 
+          background: var(--bg); 
+          color: var(--bg); 
+          text-align: center; 
+          padding: 80px 0;
+          width: 100%;
+          max-width: none;
+          margin: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .banner-section h2 { color: var(--bg); margin-bottom: 20px; font-family: var(--font-heading); }
+        .banner-section p { font-size: 1.2rem; margin-bottom: 30px; }
+        .banners-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .banner-item { background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue)); color: var(--bg); border-radius: 12px; height: 200px; display: flex; align-items: center; justify-content: center; color: var(--bg); font-weight: bold; }
+
+        /* Image Slider Section */
+        .slider-section {
+          padding: 80px 20px;
+          text-align: center;
+          background: var(--bg);
+          width: 100%;
+          max-width: none;
+          margin: 0;
         }
 
-        .btn-primary:hover {
-            background-color: #e65800;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
+        .slider-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 30px;
+          overflow: hidden;
         }
 
-        .btn-secondary {
-            background-color: var(--secondary-color);
-            color: var(--white);
+        .slider {
+          grid-column: 1 / -1;
+          display: flex;
+          width: 500%;
+          animation: slide 20s infinite;
         }
 
-        .btn-secondary:hover {
-            background-color: #002260;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
+        .slider img {
+          width: 20%;
+          height: 700px;
+          object-fit: cover;
+          display: block;
+          border: 2px solid var(--accent-blue);
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: var(--shadow);
         }
 
-        .card {
-            background: var(--white);
-            border-radius: var(---border-radius);
-            box-shadow: var(--shadow);
-            padding: 1.5rem;
-            transition: var(--transition);
-            text-align: left;
-            margin-bottom: 1.5rem;
+        @keyframes slide {
+          0% { transform: translateX(0); }
+          20% { transform: translateX(0); }
+          25% { transform: translateX(-20%); }
+          45% { transform: translateX(-20%); }
+          50% { transform: translateX(-40%); }
+          70% { transform: translateX(-40%); }
+          75% { transform: translateX(-60%); }
+          95% { transform: translateX(-60%); }
+          100% { transform: translateX(-80%); }
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
+        /* Sections */
+        .section { padding: 80px 0; }
+        .section h2 { font-size: 2.5rem; margin: 0 0 20px; text-align: center; color: var(--text); font-family: var(--font-heading); }
+        .subhead { color: var(--bg); margin: 0 0 40px; text-align: center; font-size: 1.1rem; }
 
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* --- Header & Navigation --- */
-        .main-header {
-            background: var(--white);
-            box-shadow: var(--shadow);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100%;
-        }
-
-        .main-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-link {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--secondary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-            position: relative;
-            padding-bottom: 5px;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .mobile-nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .hamburger {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: var(--secondary-color);
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .hamburger::before,
-        .hamburger::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 3px;
-            background: var(--secondary-color);
-            left: 0;
-            transition: var(--transition);
-        }
-
-        .hamburger::before {
-            top: -8px;
-        }
-
-        .hamburger::after {
-            bottom: -8px;
-        }
-
-        /* --- Open Day Side Banner (VISIBLE BY DEFAULT for Desktop and Laptop) --- */
-        .open-day-banner {
-            position: fixed;
-            top: 20vh;
-            right: 20px;
-            width: 320px;
-            max-height: 60vh;
-            background: linear-gradient(135deg, var(--primary-color), #e65800);
-            color: var(--white);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-lg);
-            z-index: 999;
-            transition: all 0.5s ease;
-            overflow-y: auto;
-        }
-
-        .open-day-banner.hidden {
-            right: -350px;
-            opacity: 0;
-        }
-
-        .open-day-banner h4 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .open-day-banner .highlight {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .open-day-banner ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .open-day-banner ul li {
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .open-day-banner ul li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #4CAF50;
-            font-weight: bold;
-        }
-
-        .open-day-toggle {
-            position: fixed;
-            top: 50%;
-            right: 20px;
-            background: var(--primary-color);
-            color: var(--white);
-            border: none;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 1000;
-            transform: translateY(-50%);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .open-day-toggle:hover {
-            background: #e65800;
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        /* --- Video Icon Styles --- */
-        .video-icon {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-bottom: 1rem;
-            padding: 10px;
-            background: rgba(255, 98, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .video-icon:hover {
-            color: #e65800;
-            transform: scale(1.05);
-            background: rgba(255, 98, 0, 0.2);
-        }
-
-        .video-icon i {
-            font-size: 1.5rem;
-        }
-
-        /* --- Video Card Styles --- */
-        .video-card iframe {
-            width: 100%;
-            height: 200px;
-            border: none;
-            border-radius: var(--border-radius);
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        /* --- Partnerships Section Styles --- */
-        .partnerships-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .partnership-card {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .partnership-card i {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .partnership-card img {
-            max-width: 150px;
-            height: auto;
-            border-radius: var(--border-radius);
-            margin-bottom: 1rem;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .partnership-card h4 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .partnership-card p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        /* --- Main Content Sections --- */
-        .hero {
-            background-image: linear-gradient(rgba(0, 48, 135, 0.6), rgba(0, 48, 135, 0.6)), url('hero-background.png');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            text-align: center;
-            padding: 6rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 70vh;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
+        /* Services Grid */
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
+          display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+        .service-card { 
+          border: 2px solid var(--accent-blue); 
+          border-radius: 12px; 
+          overflow: hidden; 
+          background: var(--bg); 
+          text-align: center;
+          transition: all 0.3s ease;
+          box-shadow: var(--shadow);
+          padding: 20px;
+        }
+        .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--accent-pink); }
+        .service-title { font-size: 1.5rem; margin: 0 0 15px; color: var(--text); font-family: var(--font-heading); }
+        .service-desc { color: var(--text-muted); margin: 0 0 20px; }
+        .service-btn { 
+          background: var(--accent-pink); color: var(--bg); padding: 10px 20px; border-radius: 20px; text-decoration: none; 
+          font-weight: 500; transition: all 0.3s ease;
+        }
+        .service-btn:hover { background: #e55aa3; transform: translateY(-2px); }
+
+        /* Featured Projects - Adapted to Featured Testimonials */
+        .featured-section { background: var(--bg); padding: 80px 0; }
+        .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .featured-card { border: 2px solid var(--accent-pink); border-radius: 12px; padding: 30px; text-align: center; box-shadow: var(--shadow); transition: all 0.3s ease; }
+        .featured-card:hover { transform: translateY(-5px); }
+        .featured-title { font-size: 1.2rem; margin-bottom: 10px; color: var(--accent-blue); font-family: var(--font-heading); }
+        .featured-desc { color: var(--text-muted); }
+
+        /* Active Projects - Adapted to Services or Testimonials */
+        .active-section { 
+          background: teal; 
+          color: var(--bg); 
+          text-align: center; 
+          padding: 80px 0; 
+          width: 100%;
+          max-width: none;
+          margin: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .active-section h2 { color: var(--bg); margin-bottom: 20px; font-family: var(--font-heading); }
+        .active-section p { font-size: 1.2rem; margin-bottom: 30px; }
+        .active-grid { 
+          max-width: 1200px; 
+          margin: 0 auto; 
+          display: grid; 
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+          gap: 30px; 
+        }
+        .active-card { background: var(--bg); border: 2px solid var(--accent-blue); border-radius: 12px; padding: 20px; text-align: center; box-shadow: var(--shadow); }
+        .active-title { font-size: 1.2rem; margin-bottom: 10px; font-family: var(--font-heading); }
+        .active-phase { color: var(--accent-pink); font-weight: bold; margin-bottom: 10px; }
+        .active-desc { color: var(--text-muted); margin-bottom: 15px; }
+
+        /* About Section */
+        .about-section { 
+          padding: 80px 0; 
+          text-align: center; 
+          background: whitesmoke; 
+          width: 100%;
+          max-width: none;
+          margin: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .about-content { max-width: 1200px; margin: 0 auto; }
+        .about-badges { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+        .badge { background: var(--accent-blue); color: var(--bg); padding: 10px 20px; border-radius: 20px; font-weight: 500; }
+        .about-profile {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 20px;
+          max-width: 1200px;
+          margin: 40px auto 0;
+        }
+        .about-profile-card {
+          background: var(--bg);
+          border: 2px solid var(--accent-blue);
+          border-radius: 12px;
+          padding: 20px;
+          width: 50%;
+          box-shadow: var(--shadow);
+          height: auto;
+          min-height: 400px;
+          overflow: visible;
+        }
+        .about-profile-card h3 {
+          font-weight: bold;
+          margin: 0 0 15px;
+          color: var(--text);
+          font-family: var(--font-heading);
+        }
+        .about-profile-image {
+          width: 50%;
+          border: 2px solid var(--accent-blue);
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: var(--shadow);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .about-profile-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
         }
 
-        .service-header {
-            color: var(--secondary-color);
-            font-weight: 600;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            text-align: center;
+        /* Careers Section */
+        .careers-section {
+          padding: 80px 0;
+          text-align: center;
+          background: var(--bg);
+          width: 100%;
+          max-width: none;
+          margin: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .careers-section h2 { font-size: 2.5rem; margin: 0 0 20px; color: var(--text); font-family: var(--font-heading); }
+        .careers-actions { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 40px 0; }
+
+        /* CTA Section */
+        .cta-section {
+          background: teal; color: var(--bg); text-align: center; padding: 80px 0;
+          width: 100%;
+          max-width: none;
+          margin: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .cta-section h2 { color: var(--bg); margin-bottom: 20px; font-family: var(--font-heading); }
+        .cta-section p { font-size: 1.2rem; margin-bottom: 30px; }
+
+        /* Values */
+        .values { padding-left: 18px; display: grid; gap: 15px; max-width: 600px; margin: 0 auto; }
+        .values li { margin-bottom: 0; color: var(--text-muted); }
+        .values strong { color: var(--text); }
+
+        /* Contact */
+        .contact-actions { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 20px 0; }
+        .note { color: var(--text-muted); margin-top: 10px; text-align: center; }
+
+        /* Map Section */
+        .map-section {
+          padding: 80px 0;
+          text-align: center;
+          background: var(--bg);
+        }
+        .map-container {
+          max-width: 800px;
+          margin: 0 auto;
+          width: 100%;
+          background: var(--bg);
+          border: 2px solid var(--accent-blue);
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: var(--shadow);
+          padding: 20px;
+        }
+        .map-card {
+          text-align: left;
+          margin-bottom: 20px;
+        }
+        .map-card h3 {
+          font-size: 1.5rem;
+          margin: 0 0 10px;
+          color: var(--text);
+          font-family: var(--font-heading);
+        }
+        .map-card p {
+          margin: 5px 0;
+          color: var(--text-muted);
+        }
+        .map-section h2 {
+          font-size: 2.5rem;
+          margin: 0 0 20px;
+          color: var(--text);
+          font-family: var(--font-heading);
+        }
+        .map-iframe {
+          width: 100%;
+          height: 450px;
+          border: 0;
         }
 
-        .about-section {
-            background-color: var(--light-bg);
+        /* Footer */
+        .site-footer { background: var(--text); color: var(--bg); padding: 60px 0 20px; }
+        .footer-inner {
+          display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;
         }
-
-        .doctors-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+        .footer-section h4 { font-size: 1.2rem; margin-bottom: 20px; color: var(--accent-pink); font-family: var(--font-heading); }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 10px; }
+        .footer-section ul li a { color: var(--bg); text-decoration: none; transition: color 0.3s ease; opacity: 0.8; }
+        .footer-section ul li a:hover { opacity: 1; color: var(--accent-blue); }
+        .social-links { display: flex; gap: 15px; }
+        .social-link {
+          width: 40px; height: 40px; background: var(--accent-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center;
+          color: var(--bg); transition: background 0.3s ease;
         }
-
-        .doctor-card {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .doctor-card img {
-            width: 250px;
-            height: 300px;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .doctor-card h3 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .doctor-card .title {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .doctor-card p {
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        .testimonial-section {
-            padding: 4rem 0;
-            background-color: var(--light-bg);
-        }
-
-        .testimonial-slider {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-
-        .testimonial-slide {
-            display: none;
-            text-align: center;
-        }
-
-        .testimonial-slide.active {
-            display: block;
-        }
-
-        .testimonial-slide .card {
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .testimonial-slide p {
-            font-style: italic;
-            margin-bottom: 1rem;
-            color: var(--text-light);
-        }
-
-        .testimonial-slide .author {
-            font-weight: 600;
-            color: var(--secondary-color);
-        }
-
-        .slider-controls {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-
-        .slider-controls button {
-            background: none;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 0.5rem 1rem;
-            margin: 0 0.5rem;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .slider-controls button:hover {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        .calendly-section {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .calendly-section .btn-primary {
-            padding: 16px 40px;
-            font-size: 1.2rem;
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        .calendly-section .btn-primary:hover {
-            background-color: #e65800;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .resources-grid, .legal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .contact-info h3, .office-hours h3 {
-            color: var(--secondary-color);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .main-footer {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 3rem 0 0;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-col h4 {
-            color: var(--white);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .footer-col h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--primary-color);
-        }
-
-        .footer-col p {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul a {
-            text-decoration: none;
-            color: var(--white);
-            transition: var(--transition);
-        }
-
-        .footer-col ul a:hover {
-            color: var(--primary-color);
-            padding-left: 5px;
-        }
-
+        .social-link:hover { background: var(--accent-pink); }
+        .newsletter-form { display: flex; gap: 10px; }
+        .newsletter-form input { flex: 1; padding: 10px; border-radius: 5px; border: none; }
+        .newsletter-form .btn { background: var(--accent-pink); color: var(--bg); border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-            padding: 1.5rem 0;
+          border-top: 1px solid #555; padding-top: 20px; text-align: center; color: #ccc;
+        }
+        .footer-legal { display: flex; gap: 20px; justify-content: center; font-size: 14px; }
+        .footer-legal a { color: #ccc; }
+
+        /* Desktop: Large screens (min-width: 1200px) */
+        @media (min-width: 1200px) {
+          .container { padding: 0 40px; }
+          .hero { padding: 120px 0; }
+          .section { padding: 100px 0; }
+          .hero h1 { font-size: 4rem; }
+          .stat-number { font-size: 3rem; }
+          .services-grid, .featured-grid, .active-grid { grid-template-columns: repeat(3, 1fr); }
+          .banners-grid { grid-template-columns: repeat(3, 1fr); }
+          .header-inner { padding: 20px 0; }
+          .brand { font-size: 28px; }
+          .brand img { max-width: 180px; }
+          .nav-main { gap: 40px; }
+          .nav-main a { font-size: 1.1rem; }
+          .about-profile { gap: 40px; }
+          .about-profile-card, .about-profile-image { height: auto; min-height: 300px; }
+          .slider-container, .services-grid { grid-template-columns: repeat(3, 1fr); }
+          .slider-card img { height: 250px; }
         }
 
-        /* Medical Certificates Section Styles */
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
+        /* Laptop: Medium-large screens (1024px - 1199px) */
+        @media (min-width: 1024px) and (max-width: 1199px) {
+          .container { padding: 0 30px; }
+          .hero { padding: 100px 0; }
+          .section { padding: 90px 0; }
+          .hero h1 { font-size: 3.5rem; }
+          .stat-number { font-size: 2.5rem; }
+          .services-grid, .featured-grid, .active-grid { grid-template-columns: repeat(2, 1fr); }
+          .banners-grid { grid-template-columns: repeat(2, 1fr); }
+          .header-inner { padding: 18px 0; }
+          .brand { font-size: 26px; }
+          .brand img { max-width: 160px; }
+          .nav-main { gap: 35px; }
+          .about-profile { gap: 30px; }
+          .about-profile-card, .about-profile-image { height: auto; min-height: 300px; }
+          .slider-container, .services-grid { grid-template-columns: repeat(2, 1fr); }
+          .slider-card img { height: 220px; }
         }
 
-        .certificate-card {
-            background: linear-gradient(135deg, var(--primary-color), #e65800);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem 1rem;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
+        /* Tablet: Medium screens (768px - 1023px) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .container { padding: 0 25px; }
+          .hero { padding: 80px 0; margin-top: 40px; }
+          .section { padding: 70px 0; }
+          .hero h1 { font-size: 3rem; }
+          .lead { font-size: 1.1rem; font-family: var(--font-body); }
+          .stat-number { font-size: 2rem; }
+          .hero-stats { gap: 30px; }
+          .services-grid, .featured-grid, .active-grid { grid-template-columns: repeat(2, 1fr); }
+          .banners-grid { grid-template-columns: repeat(2, 1fr); }
+          .header-inner { padding: 15px 0; flex-wrap: wrap; }
+          .nav-main { gap: 25px; }
+          .brand { font-size: 24px; }
+          .brand img { max-width: 140px; }
+          .top-bar-content { justify-content: center; }
+          .contact-info span { margin-right: 15px; font-size: 13px; }
+          .top-bar-links { gap: 15px; }
+          .about-badges { gap: 15px; }
+          .values { max-width: 500px; padding-left: 15px; }
+          .map-iframe { height: 350px; }
+          .banner-section, .active-section, .cta-section, .about-section, .map-section, .slider-section, .careers-section { padding-left: 25px; padding-right: 25px; }
+          .about-profile { flex-direction: column; gap: 20px; }
+          .about-profile-card, .about-profile-image {
+            width: 100%;
+            height: auto;
+            min-height: 300px;
+          }
+          .slider-container, .services-grid { grid-template-columns: repeat(2, 1fr); }
+          .slider-card img { height: 200px; }
         }
 
-        .certificate-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .certificate-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--white);
-        }
-
-        .certificate-card p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            line-height: 1.4;
-        }
-
-        /* --- Responsive Design --- */
-        /* Desktop (≥1200px) - Base styles already cover this */
-        @media (max-width: 1199px) {
-            .container {
-                max-width: 960px;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .doctors-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
-
-            .doctor-card img {
-                width: 220px;
-                height: 260px;
-            }
-        }
-
-        /* Laptop (992px-1199px) */
-        @media (max-width: 1199px) and (min-width: 992px) {
-            .services-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .certificates-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .partnerships-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .open-day-banner {
-                width: 300px;
-                right: 15px;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-            }
-
-            .nav-links a {
-                font-size: 0.95rem;
-            }
-        }
-
-        /* Tablet (768px-991px) */
-        @media (max-width: 991px) {
-            .container {
-                max-width: 720px;
-                padding: 0 0.75rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .section-subtitle {
-                font-size: 1rem;
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .certificates-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .partnerships-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .doctor-card img {
-                width: 200px;
-                height: 240px;
-            }
-
-            .calendly-section .btn-primary {
-                padding: 14px 32px;
-                font-size: 1.1rem;
-            }
-
-            .testimonial-slider {
-                max-width: 100%;
-            }
-
-            .open-day-banner,
-            .open-day-toggle {
-                display: none !important;
-            }
-
-            .video-card iframe {
-                height: 180px;
-            }
-
-            .partnership-card img {
-                max-width: 120px;
-            }
-        }
-
-        /* Mobile L (576px-767px) */
+        /* Mobile (max-width: 767px) */
         @media (max-width: 767px) {
-            html {
-                font-size: 15px;
-            }
-
-            .container {
-                max-width: 540px;
-                padding: 0 0.75rem;
-            }
-
-            .main-nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background: var(--white);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                transition: right 0.4s ease-in-out;
-            }
-
-            .main-nav.active {
-                right: 0;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                text-align: center;
-                gap: 2.5rem;
-            }
-
-            .nav-links a {
-                font-size: 1.5rem;
-            }
-
-            .mobile-nav-toggle {
-                display: block;
-            }
-
-            body.nav-open {
-                overflow: hidden;
-            }
-
-            .mobile-nav-toggle.active .hamburger {
-                background: transparent;
-            }
-
-            .mobile-nav-toggle.active .hamburger::before {
-                transform: rotate(45deg);
-                top: 0;
-            }
-
-            .mobile-nav-toggle.active .hamburger::after {
-                transform: rotate(-45deg);
-                bottom: 0;
-            }
-
-            .hero {
-                min-height: 60vh;
-                padding: 4rem 0;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 0.9rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .certificates-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .partnerships-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .doctors-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .doctor-card img {
-                width: 180px;
-                height: 220px;
-            }
-
-            .calendly-section .btn-primary {
-                padding: 12px 24px;
-                font-size: 1rem;
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .service-header {
-                font-size: 1.2rem;
-            }
-
-            .slider-controls {
-                margin-top: 1rem;
-            }
-
-            .slider-controls button {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.9rem;
-            }
-
-            .open-day-banner,
-            .open-day-toggle {
-                display: none !important;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .footer-col h4::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .video-card iframe {
-                height: 160px;
-            }
-
-            .partnership-card img {
-                max-width: 100px;
-            }
+          .container { padding: 0 15px; }
+          .hero { padding: 60px 15px; margin-top: 30px; }
+          .banner-section, .active-section, .cta-section, .about-section, .slider-section, .careers-section { padding: 60px 15px; }
+          .map-section { padding: 60px 15px; }
+          .section { padding: 60px 0; }
+          .hero h1 { font-size: 2.5rem; font-family: var(--font-heading); }
+          .lead { font-size: 1rem; font-family: var(--font-body); }
+          .stat-number { font-size: 2rem; }
+          .hero-stats { gap: 25px; flex-direction: column; }
+          .services-grid, .featured-grid, .active-grid { grid-template-columns: 1fr; gap: 25px; }
+          .banners-grid { grid-template-columns: 1fr; gap: 15px; }
+          .header-inner { padding: 12px 0; }
+          .brand { font-size: 22px; }
+          .brand img { max-width: 120px; }
+          .nav-main { 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: var(--bg);
+            z-index: 1000;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 80px 20px 20px;
+            gap: 20px;
+            box-shadow: none;
+            display: flex;
+          }
+          .nav-main.open { 
+            transform: translateX(0); 
+          }
+          .nav-main.open .nav-close {
+            display: block;
+          }
+          .nav-main.open + .nav-toggle {
+            display: none;
+          }
+          .nav-main a { 
+            font-size: 1.1rem; 
+            padding: 10px 0; 
+            width: 100%; 
+            text-align: left; 
+          }
+          .nav-toggle { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 4px; 
+            cursor: pointer; 
+            z-index: 1001;
+          }
+          .nav-toggle span { 
+            width: 25px; 
+            height: 3px; 
+            background: var(--accent-pink); 
+            transition: 0.3s; 
+          }
+          .nav-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+          }
+          .nav-toggle.open span:nth-child(2) {
+            opacity: 0;
+          }
+          .nav-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+          }
+          .top-bar-content { flex-direction: column; gap: 10px; text-align: center; }
+          .contact-info span { margin-right: 0; display: block; }
+          .top-bar-links { gap: 15px; }
+          .hero-actions, .careers-actions { gap: 15px; }
+          .about-badges { flex-direction: column; gap: 10px; align-items: center; }
+          .values { max-width: 400px; padding-left: 12px; gap: 12px; }
+          .map-iframe { height: 300px; }
+          .newsletter-form { flex-direction: column; gap: 10px; }
+          .service-card, .featured-card, .active-card { padding: 25px 20px; }
+          .active-grid { max-width: none; margin: 0; }
+          .banners-grid { margin: 0; }
+          .about-profile { flex-direction: column; gap: 20px; }
+          .about-profile-card, .about-profile-image {
+            width: 100%;
+            height: auto;
+            min-height: 300px;
+          }
+          .slider-container, .services-grid { grid-template-columns: 1fr; }
+          .slider-card img { height: 180px; }
         }
 
-        /* Mobile M (375px-575px) */
-        @media (max-width: 575px) {
-            html {
-                font-size: 14px;
-            }
-
-            .container {
-                padding: 0 0.5rem;
-            }
-
-            .section {
-                padding: 3rem 0;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .section-subtitle {
-                font-size: 0.9rem;
-                max-width: 90%;
-            }
-
-            .hero {
-                min-height: 50vh;
-                padding: 3rem 0;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 0.85rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-
-            .btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-
-            .doctor-card {
-                padding: 1.5rem;
-            }
-
-            .doctor-card img {
-                width: 160px;
-                height: 200px;
-            }
-
-            .calendly-section .calendly-inline-widget {
-                height: 600px;
-                min-width: 100%;
-            }
-
-            .map-container iframe {
-                height: 300px;
-                width: 100%;
-            }
-
-            .video-card iframe {
-                height: 140px;
-            }
-
-            .partnership-card img {
-                max-width: 90px;
-            }
+        /* Mobile Medium: Small screens (481px - 575px) */
+        @media (min-width: 481px) and (max-width: 575px) {
+          .hero h1 { font-size: 2.2rem; font-family: var(--font-heading); }
+          .lead { font-size: 0.95rem; font-family: var(--font-body); }
+          .stat-number { font-size: 1.8rem; }
+          .hero-stats { gap: 20px; }
+          .services-grid, .featured-grid, .active-grid { gap: 20px; }
+          .banners-grid { gap: 10px; }
+          .banner-item { height: 180px; font-size: 0.9rem; }
+          .header-inner { padding: 10px 0; justify-content: space-between; }
+          .brand { font-size: 20px; }
+          .brand img { max-width: 100px; }
+          .cta { padding: 10px 20px; font-size: 0.9rem; }
+          .top-bar { font-size: 13px; padding: 8px 0; }
+          .top-bar-links { gap: 10px; }
+          .top-bar-links a { font-size: 0.9rem; }
+          .hero-actions, .careers-actions { flex-direction: column; gap: 10px; width: 100%; }
+          .button { width: 100%; padding: 12px 20px; }
+          .service-card, .active-card, .featured-card { padding: 15px; margin: 0 5px; }
+          .service-title, .active-title { font-size: 1.3rem; font-family: var(--font-heading); }
+          .about-badges .badge { padding: 8px 16px; font-size: 0.9rem; }
+          .values { max-width: 350px; padding-left: 10px; gap: 10px; }
+          .values li { font-size: 0.9rem; }
+          .banner-section, .active-section, .cta-section, .about-section, .slider-section, .careers-section { padding: 50px 15px; }
+          .map-section { padding: 50px 15px; }
+          .map-container { padding: 15px; }
+          .map-card h3 { font-size: 1.3rem; font-family: var(--font-heading); }
+          .map-iframe { height: 250px; }
+          .contact-actions { flex-direction: column; gap: 10px; }
+          .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+          .footer-section h4 { font-size: 1.1rem; font-family: var(--font-heading); }
+          .section h2 { font-size: 2.2rem; font-family: var(--font-heading); }
+          .subhead { font-size: 1rem; font-family: var(--font-body); }
+          .about-profile { flex-direction: column; gap: 15px; }
+          .about-profile-card, .about-profile-image {
+            width: 100%;
+            height: auto;
+            min-height: 300px;
+          }
+          .slider-container, .services-grid { grid-template-columns: 1fr; }
+          .slider-card img { height: 160px; }
         }
 
-        /* Mobile S (≤374px) */
-        @media (max-width: 374px) {
-            html {
-                font-size: 13px;
-            }
-
-            .container {
-                padding: 0 0.5rem;
-            }
-
-            .section {
-                padding: 2.5rem 0;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-            }
-
-            .section-subtitle {
-                font-size: 0.85rem;
-            }
-
-            .hero {
-                min-height: 40vh;
-                padding: 2.5rem 0;
-            }
-
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-
-            .hero p {
-                font-size: 0.8rem;
-            }
-
-            .btn {
-                padding: 8px 16px;
-                font-size: 0.85rem;
-            }
-
-            .doctor-card img {
-                width: 140px;
-                height: 180px;
-            }
-
-            .calendly-section .btn-primary {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-                max-width: 100%;
-            }
-
-            .calendly-section .calendly-inline-widget {
-                height: 550px;
-                min-width: 100%;
-            }
-
-            .testimonial-slide .card {
-                min-height: 180px;
-                padding: 1rem;
-            }
-
-            .slider-controls button {
-                padding: 0.3rem 0.6rem;
-                font-size: 0.8rem;
-            }
-
-            .contact-info p,
-            .office-hours table {
-                font-size: 0.9rem;
-            }
-
-            .map-container iframe {
-                height: 250px;
-                width: 100%;
-            }
-
-            .video-card iframe {
-                height: 120px;
-            }
-
-            .partnership-card img {
-                max-width: 80px;
-            }
+        /* Mobile Small: Extra small screens (max-width: 480px) */
+        @media (max-width: 480px) {
+          body { font-size: 15px; line-height: 1.5; font-family: var(--font-body); }
+          .container { padding: 0 15px; }
+          .hero { padding: 40px 15px; margin-top: 10px; }
+          .banner-section, .active-section, .cta-section, .about-section, .slider-section, .careers-section { padding: 40px 15px; }
+          .map-section { padding: 40px 15px; }
+          .section { padding: 40px 0; }
+          .hero h1 { font-size: 1.8rem; line-height: 1.1; margin-bottom: 15px; font-family: var(--font-heading); }
+          .lead { font-size: 0.9rem; margin: 0 0 20px; font-family: var(--font-body); }
+          .stat-number { font-size: 1.5rem; }
+          .stat-label { font-size: 0.8rem; }
+          .hero-stats { gap: 15px; flex-direction: column; align-items: center; }
+          .services-grid, .featured-grid, .active-grid { gap: 15px; }
+          .banners-grid { gap: 8px; }
+          .banner-item { height: 150px; font-size: 0.8rem; padding: 10px; }
+          .header-inner { padding: 8px 0; flex-direction: column; gap: 10px; align-items: center; }
+          .brand { font-size: 18px; }
+          .brand img { max-width: 90px; }
+          .nav-main.open { padding: 15px; gap: 10px; }
+          .nav-main a { font-size: 1rem; text-align: center; padding: 5px 0; }
+          .cta { padding: 8px 16px; font-size: 0.85rem; width: 100%; text-align: center; margin-top: 5px; }
+          .nav-toggle { order: 1; }
+          .top-bar { font-size: 12px; padding: 6px 0; }
+          .top-bar-content { flex-direction: column; gap: 5px; }
+          .contact-info span { margin: 0; font-size: 12px; display: block; text-align: center; }
+          .top-bar-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
+          .top-bar-links a { font-size: 0.85rem; }
+          .hero-actions, .careers-actions { flex-direction: column; gap: 8px; width: 100%; }
+          .button { width: 100%; padding: 10px 15px; font-size: 0.9rem; }
+          .service-card, .active-card, .featured-card { padding: 12px; margin: 0 0; border-radius: 8px; }
+          .service-title, .active-title { font-size: 1.2rem; margin-bottom: 10px; font-family: var(--font-heading); }
+          .service-desc, .active-desc, .featured-desc { font-size: 0.9rem; line-height: 1.4; }
+          .service-btn { padding: 8px 16px; font-size: 0.9rem; width: 100%; display: block; text-align: center; }
+          .section h2 { font-size: 2rem; margin-bottom: 15px; font-family: var(--font-heading); }
+          .subhead { font-size: 1rem; margin: 0 0 30px; text-align: center; padding: 0 5px; font-family: var(--font-body); }
+          .about-content p { font-size: 0.95rem; padding: 0 5px; font-family: var(--font-body); }
+          .about-badges { flex-direction: column; gap: 8px; }
+          .badge { padding: 6px 12px; font-size: 0.85rem; width: 100%; text-align: center; box-sizing: border-box; }
+          .values { max-width: 300px; padding-left: 8px; gap: 8px; margin: 20px auto; }
+          .values li { font-size: 0.85rem; padding: 0 5px; }
+          .cta-section h2 { font-size: 2rem; font-family: var(--font-heading); }
+          .cta-section p { font-size: 1rem; padding: 0 5px; font-family: var(--font-body); }
+          .map-container { padding: 10px; margin: 0; border-radius: 8px; }
+          .map-card { text-align: center; }
+          .map-card h3 { font-size: 1.2rem; font-family: var(--font-heading); }
+          .map-card p { font-size: 0.85rem; }
+          .map-iframe { height: 200px; border-radius: 8px; }
+          .contact-actions { flex-direction: column; gap: 8px; }
+          .note { font-size: 0.85rem; padding: 0 5px; font-family: var(--font-body); }
+          .footer-inner { gap: 20px; padding: 0 5px; }
+          .footer-section h4 { font-size: 1rem; font-family: var(--font-heading); }
+          .footer-section p, .footer-section ul li { font-size: 0.9rem; }
+          .social-links { justify-content: center; gap: 10px; }
+          .newsletter-form { gap: 8px; flex-direction: column; }
+          .newsletter-form input, .newsletter-form .btn { padding: 8px; font-size: 0.9rem; width: 100%; box-sizing: border-box; }
+          .footer-bottom { font-size: 0.8rem; padding: 0 5px; }
+          .footer-legal { flex-direction: column; gap: 5px; font-size: 0.8rem; }
+          .progress { height: 8px; margin: 8px 0; }
+          .progress-text { font-size: 0.8rem; }
+          .about-profile { flex-direction: column; gap: 15px; }
+          .about-profile-card, .about-profile-image {
+            width: 100%;
+            height: auto;
+            min-height: 200px;
+            margin: 0 auto;
+            padding: 10px;
+          }
+          .slider-container, .services-grid { grid-template-columns: 1fr; }
+          .slider-card img { height: 150px; }
         }
 
-        .f-active {
-            color: var(--primary-color) !important;
-        }
+        /* Focus states */
+        :focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 2px; }
+
+        /* Service card images */
+        .service-card img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          object-position: center;
+          border-radius: 8px;
+        }  
     </style>
     <!-- Calendly Inline Widget -->
     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
 <body>
-    <!-- Open Day Side Banner - VISIBLE BY DEFAULT for Desktop and Laptop -->
-    <button class="open-day-toggle" id="openDayToggle" title="Hide Open Day Banner">
-        <i class="fas fa-times"></i>
-    </button>
-    
-    <div class="open-day-banner" id="openDayBanner">
-        <button id="closeBanner" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">×</button>
-        <h4>🩺 Open Day Event</h4>
-        <div class="highlight">Every first Saturday of the Month</div>
-        <p><strong>FREE Health Checks:</strong></p>
-        <ul>
-            <li>Blood Sugar Testing</li>
-            <li>Blood Pressure Screening</li>
-            <li>Weight & BMI Assessment</li>
-        </ul>
-        <p><strong>Plus:</strong> 10-minute consultation with our doctors</p>
-        <div style="text-align: center; margin-top: 1rem;">
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span>+1 246 416-4875</span>
+            </div>
+            <div class="top-bar-links">
+                <a href="#services">Find a Caregiver</a>
+                <a href="#contact">Help</a>
+            </div>
         </div>
     </div>
 
-    <header class="main-header">
-        <div class="container">
-            <a href="#" class="logo-link">
-                <span class="logo-text">Trident Medical</span>
-            </a>
-            <nav class="main-nav" id="mainNav">
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#certificates">Medical Certificates</a></li>
-                    <li><a href="#appointments">Appointments</a></li>
-                    <li><a href="#resources">Patient Resources</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+    <header class="site-header">
+        <div class="header-inner container">
+            <a href="/" class="brand"><img src="eljesticlogo.png" width="150" alt="El Jestic Home Health Services"></a>
+            <nav class="nav-main" id="primary-menu" role="menubar">
+                <button class="nav-close" aria-label="Close menu">&times;</button>
+                <a href="#services">Services</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#about">About</a>
+                <a href="#careers">Careers</a>
+                <a href="#contact">Contact</a>
             </nav>
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="mobileNavToggle">
-                <span class="hamburger"></span>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
             </button>
+            <a href="#contact" class="cta">Get Care</a>
         </div>
     </header>
 
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Welcome to Trident Medical</h1>
-            <p>Your trusted partner in health, providing compassionate care for the whole family.</p>
-            <div class="hero-buttons">
-                <a href="#appointments" class="btn btn-primary">Book Appointment</a>
-                <a href="#services" class="btn btn-secondary">Learn More</a>
-            </div>
-        </div>
-    </section>
+    <div class="nav-backdrop"></div>
 
-    <section class="about-section section" id="about">
-        <div class="container">
-            <h2 class="section-title">About Us</h2>
-            <p class="section-subtitle">Meet our dedicated team of healthcare professionals committed to your well-being.</p>
-            <div class="doctors-grid">
-                <div class="card doctor-card">
-                    <img src="drpowlett.jpeg" alt="Dr. Dale Powlett">
-                    <h3>Dr. Dale Powlett</h3>
-                    <p class="title">MD, Family Medicine</p>
-                    <p>With over 15 years of experience in family medicine, Dr. Powlett specializes in preventive care and chronic disease management. He is dedicated to providing personalized treatment plans for patients of all ages.</p>
+    <main>
+        <section class="hero">
+            <h1>Delivering Healing at home</h1>
+            <p class="lead">Your loved ones deserve the best care in a familiar environment</p>
+            <div class="hero-actions">
+                <a href="#services" class="button primary">Explore Services</a>
+                <a href="#contact" class="button primary">Speak with our team</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">Country</span>
                 </div>
-                <div class="card doctor-card">
-                    <img src="drthomas.jpeg" alt="Dr. Bridget Thomas-Christie">
-                    <h3>Dr. Bridget Thomas-Christie</h3>
-                    <p class="title">MD, General Medicine</p>
-                    <p>Dr. Thomas-Christie brings expertise in holistic care with a focus on lifestyle changes. She is passionate about patient education and empowering individuals to take control of their health journey.</p>
+                <div class="stat">
+                    <span class="stat-number">1+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Client Satisfaction</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="testimonial-section section" id="testimonials">
-        <div class="container">
-            <h2 class="section-title">What Our Patients Say</h2>
-            <p class="section-subtitle">Hear from those who have experienced our care.</p>
-            <div class="testimonial-slider">
-                <div class="testimonial-slide active">
-                    <div class="card">
-                        <p>"The team at Trident Medical made me feel so comfortable during my visit. Dr. Powlett's expertise and kindness are unmatched!"</p>
-                        <div class="author">— Mel Brathwaite</div>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <div class="card">
-                        <p>"I've been managing my diabetes with Dr. Thomas-Christie, and her guidance has truly changed my life for the better."</p>
-                        <div class="author">— John Mapp</div>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <div class="card">
-                        <p>"Quick, professional service for my minor surgery. I highly recommend Trident Medical to everyone!"</p>
-                        <div class="author">— Emily Johnson</div>
-                    </div>
-                </div>
-            </div>
-            <div class="slider-controls">
-                <button class="prev-btn">Previous</button>
-                <button class="next-btn">Next</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="services">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">Comprehensive care tailored to your needs.</p>
+        <section id="services" class="section container">
+            <h2>Our Services</h2>
+            <p class="subhead">Comprehensive home health solutions for every care need</p>
             <div class="services-grid">
-                <div>
-                    <h3 class="service-header">General Checkups</h3>
-                    <div class="card">Routine Health Assessments</div>
-                    <div class="card">Preventive Care</div>
-                </div>
-                <div>
-                    <h3 class="service-header">Investigations</h3>
-                    <div class="card">Blood Testing</div>
-                    <div class="card">Pap Smears</div>
-                    <div class="card">Cancer Screenings</div>
-                </div>
-                <div>
-                    <h3 class="service-header">Minor Surgeries</h3>
-                    <div class="card">Suturing Lacerations</div>
-                    <div class="card">Incisions and Drainage</div>
-                </div>
-                <div>
-                    <h3 class="service-header">Chronic Disease Management</h3>
-                    <div class="card">Diabetes Management</div>
-                    <div class="card">Hypertension Care</div>
-                    <div class="card">Cholesterol Monitoring</div>
-                    <div class="card">CKD Management</div>
-                </div>
+                <article class="service-card">
+                    <h3 class="service-title">Palliative Care</h3>
+                    <img src="palliative.jpg" alt="Palliative Care">
+                    <p class="service-desc">Pain and symptom management, emotional and spiritual support, caregiver respite and guidance.</p>
+                </article>
+                <article class="service-card">
+                    <h3 class="service-title">Post-Operative Care</h3>
+                    <img src="postoperative.jpg" alt="Post-Operative Care">
+                    <p class="service-desc">Wound care and dressing changes, pain and medication management, mobility support and recovery monitoring.</p>
+                </article>
+                <article class="service-card">
+                    <h3 class="service-title">Dementia & Alzheimer’s Care</h3>
+                    <img src="dementia.jpeg" alt="Dementia & Alzheimer’s Care">
+                    <p class="service-desc">Safety-focused routines, cognitive support and gentle activities, personal assistance and behavioral management.</p>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- New Medical Certificates Section -->
-    <section class="section" id="certificates" style="background-color: var(--light-bg);">
-        <div class="container">
-            <h2 class="section-title">Medical Certificates</h2>
-            <p class="section-subtitle">Professional medical certification services for work, school, travel, and licensing requirements.</p>
-            <div class="certificates-grid">
-                <div class="certificate-card">
-                    <h4>Back to School</h4>
-                    <p>Medical clearance certificates for school enrollment and sports participation.</p>
-                </div>
-                <div class="certificate-card">
-                    <h4>Health Certificates</h4>
-                    <p>General health fitness certificates for employment and immigration purposes.</p>
-                </div>
-                <div class="certificate-card">
-                    <h4>Food Badge</h4>
-                    <p>Medical certification for food handlers and restaurant workers compliance.</p>
-                </div>
-                <div class="certificate-card">
-                    <h4>Fit to Drive</h4>
-                    <p>Driving fitness assessments and medical clearance for license renewal.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="appointments">
-        <div class="container">
-            <h2 class="section-title">Book an Appointment</h2>
-            <p class="section-subtitle">Schedule your appointment easily and quickly with our doctors.</p>
+        <section id="appointments" class="section container">
+            <h2>Book an Appointment</h2>
+            <p class="subhead">Schedule your consultation easily and quickly with our team.</p>
             <div class="calendly-section">
                 <div class="calendly-inline-widget" 
-                     data-url="https://calendly.com/tridentmedical246"
+                     data-url="https://calendly.com/joalann-lesley792"
                      style="min-width:100%;height:700px;"></div>
             </div>
             <div style="text-align: center; margin-top: 2rem;">
-                <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
-                    Or contact us directly at <a href="tel:+12465379259" style="color: var(--primary-color); text-decoration: none;">(246) 537-9259</a> 
+                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+                    Or contact us directly at <a href="tel:+12464164875" style="color: var(--accent-pink); text-decoration: none;">(246) 416-4875</a> 
                     to schedule your appointment.
                 </p>
             </div>
+        </section>
+
+        <section class="slider-section section container">
+            <div class="slider-container">
+                <div class="slider">
+                    <img src="care1.jpeg" alt="Care Image 1">
+                    <img src="care2.jpeg" alt="Care Image 2">
+                    <img src="care3.jpeg" alt="Care Image 3">
+                    <img src="care4.jpeg" alt="Care Image 4">
+                    <img src="care5.jpeg" alt="Care Image 5">
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="featured-section section container">
+            <h2>Featured Testimonials</h2>
+            <p class="subhead">Showcasing stories from our cherished clients</p>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <p class="featured-desc">"It is my pleasure to recommend Joalann Lesley for any position involving the care of elderly individuals. Jo worked as a caregiver for my father, and from the beginning, she quickly became a valued and trusted part of our household.
+
+She is a committed, caring, and professional individual who approaches her work with compassion and respect. Jo provided excellent care for my father, always ensuring his comfort and well-being. She treated him with patience, kindness, and dignity, and it was clear that she takes great pride in the quality of care she provides.
+
+It was a sad day when Jo informed us that she would be moving on, as the entire family had grown fond of her. Even after her departure, she continued to check in from time to time to ask how my father was doing — a true testament to her dedication and heart.
+
+I can confidently recommend Jo to any family or organization seeking a reliable, compassionate, and skilled caregiver or nurse. She would be an asset to any team."</p>
+                    <div class="featured-title">– Angella Ward, Daughter</div>
+                </div>
+                <div class="featured-card">
+                    <p class="featured-desc">"It was truly a blessing having Jo care for my granny. She was patient, compassionate, and always went above and beyond to ensure granny's comfort and well-being. Her kindness, reliability, and gentle nature brought great peace of mind to our family. We remain deeply grateful for the genuine care and respect she showed every day. She will forever remain in my heart for not only her care of my granny but her care for me as well."</p>
+                    <div class="featured-title">– Micheala Lesley, Granddaughter</div>
+                </div>
+                <div class="featured-card">
+                    <p class="featured-desc">"I am pleased to provide a reference for Joalann Lesley, who has served as a terminal care nurse for my dying mother. During this time, she has consistently demonstrated exceptional compassion, professionalism, and expertise in providing end-of-life care. Her ability to connect with my mother and me during such challenging moments is truly remarkable. Joalann creates a comforting and dignified environment, ensuring that my mother felt respected and cared for, while also offering emotional support to loved ones.
+Her deep understanding of palliative care principles and commitment to patient-centered care make her an invaluable asset to any healthcare team.
+Joalann possesses outstanding clinical skills, with a keen ability to manage complex symptoms and provide tailored care that enhances the quality of life for terminally ill patients. She is adept at collaborating with multidisciplinary teams, including physicians, social workers, and chaplains, to develop and implement individualized care plans.
+Joalann's attention to detail and ability to anticipate patient needs have been instrumental in maintaining comfort and dignity for my mother. Moreover, she consistently displays empathy and patience, foster trust from my mother and me, even in the most emotionally charged situations.
+Beyond her clinical expertise, Joalann is a compassionate communicator who excels at guiding me through difficult decisions with clarity and sensitivity. She takes the time to explain medical processes, listen to concerns, and provide reassurance, which has earned them the respect and gratitude from me.
+Whilst living in our home on a 24-7 basis, Joalann was sensitive to being in our home. She was unobtrusive and minimised her impact on daily life. She was the perfect house guest.
+I wholeheartedly recommend Joalann Lesley for any role in general and terminal care nursing, as her skill, empathy, and professionalism make them an exemplary caregiver."</p>
+                    <div class="featured-title">– Dr. W Dixon, Son</div>
+                </div>
+                <div class="featured-card">
+                    <p class="featured-desc">"When I finally accepted that I could not look after my aunt on my own, I reached out for assistance and found Ms. Joalann Lesley. For us, she was the right choice to facilitate my aunt's desire to age in place. 
+My aunt was wheelchair bound having suffered from a stroke. Ms. Lesley looked after her personal hygiene, fed her breakfast and supper, and facilitated her mobility. She proved to be a discerning companion. We have found her to be respectful, skilled and very caring. She consistently demonstrated dependability, patience and trustworthiness. I highly recommend to you."</p>
+                    <div class="featured-title">– Yvette Mayers, Granddaughter</div>
+                </div>
+            </div>
+        </section>
+ 
+        <section class="active-section section">
+            <h2>Active Care Programs</h2>
+            <p class="subhead">Currently supporting families - Nurturing lives today</p>
+            <div class="active-grid">
+                <article class="active-card">
+                    <div class="active-phase">Ongoing Support</div>
+                    <h3 class="active-title">Home Nursing Program</h3>
+                    <p class="active-desc">Skilled procedures under licensed supervision, health monitoring and medication management, chronic disease support and education.</p>
+                    <div class="progress"><div class="progress-bar" style="width: 35%;"></div></div>
+                    <div class="progress-text">35% Complete</div>
+                </article>
+                <article class="active-card">
+                    <div class="active-phase">Daily Assistance</div>
+                    <h3 class="active-title">Elderly Companionship</h3>
+                    <p class="active-desc">Personal care and companionship, meal preparation and medication reminders, light housekeeping, transportation, and 24-hour care when needed.</p>
+                    <div class="progress"><div class="progress-bar" style="width: 18%;"></div></div>
+                    <div class="progress-text">18% Complete</div>
+                </article>
+                <article class="active-card">
+                    <div class="active-phase">Memory Care</div>
+                    <h3 class="active-title">Dementia Support</h3>
+                    <p class="active-desc">Safety-focused routines, cognitive support and gentle activities, personal assistance and behavioral management.</p>
+                    <div class="progress"><div class="progress-bar" style="width: 52%;"></div></div>
+                    <div class="progress-text">52% Complete</div>
+                </article>
+            </div>
+        </section>
+
+        <section id="about" class="about-section section">
+            <div class="about-profile">
+                <div class="about-profile-image">
+                    <img src="profile1.jpeg" alt="Profile Image">
+                </div>
+                <div class="about-profile-card">
+                    <h1>Why I do what I do?</h1>
+                    <h3>Our Story</h3>
+                    <p>My journey to Eljestic Home Care Services began with a leap of faith, leaving my home country to start a new life in Barbados. It was a difficult transition, filled with loneliness and moments of deep sadness as I grappled with homesickness and depression. I missed my family and the life I had known, and it felt like a part of me was missing.</p>
+                    <p>But a new chapter opened when I began working with the elderly. In their stories, their resilience, and their gentle wisdom, I found a new sense of purpose. My heart began to heal, and my perspective on life shifted. It was through them that I discovered the incredible joy and fulfillment that comes from serving others.</p>
+                    <p>One person, in particular, will forever hold a special place in my heart: Mrs. Velveteen Greenidge. She wasn't just a client; she was a beacon of light in my life. Her warmth, her grace, and her unwavering spirit taught me more about life and love than I ever thought possible. She inspired me to see that every day is a gift and that the simple act of caring for another human being is a profound privilege. It was her memory that became the foundation for Eljestic Home Care Services.</p>
+                    <p>Today, my goal is to ensure that every individual we serve feels the same positive impact that Mrs. Greenidge had on me. We're not just here to provide care; we're here to build connections, share laughter, and enrich lives.</p>
+                    <p>Our dedicated team at Eljestic is committed to delivering the highest quality of care. We believe in treating every client with the dignity, respect, and compassion they deserve. We are here to be a source of comfort, support, and friendship, ensuring that you or your loved one can live with joy and independence in the comfort of your home.</p>
+                    <p>We look forward to welcoming you into the Eljestic family.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section section">
+            <h2>Ready to Start Your Care Journey?</h2>
+            <p>We're here to help you live with dignity and joy. Reach out today!</p>
+            <div class="hero-actions">
+                <a href="#contact" class="button primary">Book a Consultation</a>
+            </div>
+        </section>
+
+        <section id="contact" class="section container narrow">
+            <h2>Contact Us</h2>
+            <p>We're here to help. Reach out to discuss your needs and we'll craft a personalized care plan.</p>
+            <div class="contact-actions">
+                <a href="tel:12464164875" class="button primary">Call: +1 246 416-4875</a>
+                <a href="whatsapp.html" class="button primary">WhatsApp: +1 246 284-7816</a>
+                <a href="mailto:care@eljestic.com" class="button primary">Email: care@eljestic.com</a>
+            </div>
+            <p class="note">Barbados • Serving clients at home across the island</p>
+        </section>
+
+        <section class="map-section section">
+            <div class="map-container">
+                <div class="map-card">
+                    <h3>Our Service Area in Barbados</h3>
+                    <p>+1 246 416-4875 (Telephone)</p>
+                    <p>+1 246 284-7816 (Whatsapp)</p>
+                    <p>care@eljestic.com</p>
+                    <p>Barbados • Serving clients at home across the island</p>
+                </div>
+                <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871914.023249!2d-59.618211!3d13.093121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c26f4a4c9f6a5b5%3A0x4b4e4b4e4b4e4b4e!2sBarbados!5e0!3m2!1sen!2sus!4v1630000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+
+        <section id="careers" class="careers-section section container">
+            <h2>Further Information</h2>
+            <p class="subhead">Explore opportunities to make a difference with El Jestic Home Health Services</p>
+            <div class="careers-actions">
+                <a href="https://form.jotform.com/252805998217065" class="button">Client Service Inquiry Form</a>
+                <a href="https://form.jotform.com/252805519683061" class="button">Employment Contract Form</a>
+                <a href="https://form.jotform.com/252805506508053" class="button">Client Service Agreement</a>
+                <a href="https://form.jotform.com/252806170811048" class="button">Employee Application Form</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner container">
+            <div class="footer-section">
+                <h4>El Jestic</h4>
+                <p>Providing compassionate home health services with a focus on dignity, independence, and joy.</p>
+                <div class="social-links">
+                    <!-- <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📷</a> -->
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#palliative">Palliative Care</a></li>
+                    <li><a href="#post-op">Post-Operative Care</a></li>
+                    <li><a href="#dementia">Dementia Care</a></li>
+                    <li><a href="#elderly">Elderly Care</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#story">Our Story</a></li>
+                    <li><a href="#values">Values</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>+1 246 416-4875</p>
+                <p>care@eljestic.com</p>
+                <p>Barbados • Serving clients at home across the island</p>
+            </div>
         </div>
-    </section>
-
-    <section class="section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <p class="section-subtitle">We're here to help. Get in touch with us today.</p>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="video-icon" id="videoIcon1">
-                        <i class="fas fa-video"></i>
-                        <span>Video Directions</span>
-                    </div>
-                    <div class="video-icon" id="videoIcon2">
-                        <i class="fas fa-video"></i>
-                        <span>2nd Video Directions</span>
-                    </div>
-                    <div class="card video-card hidden" id="videoCard">
-                        <h4 style="color: var(--secondary-color); margin-bottom: 1rem;">Video Directions</h4>
-                        <iframe src="https://www.youtube.com/embed/iuDshMjBWtw" 
-                                title="Trident Medical Video Directions 1" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen></iframe>
-                        <h4 style="color: var(--secondary-color); margin: 1rem 0;">Additional Video Directions</h4>
-                        <iframe src="https://www.youtube.com/embed/SRZA0BvnID8" 
-                                title="Trident Medical Video Directions 2" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen></iframe>
-                    </div>
-                    <p><strong>Address:</strong> 1 Sargeant's Village Tenantry Rd, Bridgetown, Christ Church, Barbados</p>
-                    <p><strong>Phone:</strong> (246) 537-9259</p>
-                    <p><strong>Email:</strong> tridentmedical246@gmail.com</p>
-                    <p><strong>Fax:</strong> (246) 456-7891</p>
-                </div>
-                <div class="office-hours">
-                    <h3>Office Hours</h3>
-                    <table>
-                        <tr><td>Monday - Friday</td><td>9:00 AM - 4:00 PM</td></tr>
-                        <tr><td>Saturday</td><td>9:00 AM - 1:00 PM</td></tr>
-                        <tr><td>Sunday</td><td>Closed</td></tr>
-                    </table>
-                </div>
-            </div>
-            <div class="map-container" style="margin-top: 3rem;">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3817.714693134686!2d-59.57212538554858!3d13.07762699032692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c43b8f7f7f7f7f7%3A0x9c43b8f7f7f7f7f7!2s1+Sargeant%27s+Village+Tenantry+Rd%2C+Bridgetown%2C+Christ+Church%2C+Barbados!5e0!3m2!1sen!2sus!4v1635781234567!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-
-            <!-- Partnerships Section -->
-            <div class="partnerships-section" style="margin-top: 4rem;">
-                <h2 class="section-title">Our Partnerships</h2>
-                <p class="section-subtitle">Collaborating for comprehensive wellness: Integrating medical care with therapy and spa services.</p>
-                <div class="partnerships-grid">
-                    <div class="card partnership-card">
-                        <img src="Islandtherapeutics.jpeg" alt="Island Therapeutics Logo">
-                        <h4>Island Therapeutics</h4>
-                        <p>Partnering with Island Therapeutics for advanced physical therapy and rehabilitation programs. Our patients receive seamless referrals for post-injury recovery and mobility enhancement, ensuring holistic healing.</p>
-                    </div>
-                    <div class="card partnership-card">
-                        <i class="fas fa-spa"></i>
-                        <h4>Renew Spa</h4>
-                        <p>In collaboration with Renew Spa, we offer integrated wellness treatments including therapeutic massages and stress relief therapies. Complementing our medical services to promote overall well-being and relaxation.</p>
-                    </div>
-                    <div class="card partnership-card">
-                        <i class="fas fa-handshake"></i>
-                        <h4>Integrated Care Network</h4>
-                        <p>Through our broader network, we connect with local specialists for multidisciplinary care, from diagnostics to ongoing support, tailored to each patient's unique needs.</p>
-                        <!-- <a href="#" class="btn btn-secondary">Learn More</a> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>About Trident Medical</h4>
-                    <p>Trident Medical is committed to providing exceptional healthcare services with compassion and expertise to patients of all ages.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a class="f-active" href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a class="f-active" href="#services">Services</a></li>
-                        <li><a class="f-active" href="#certificates">Medical Certificates</a></li>
-                        <li><a class="f-active" href="#appointments">Book Appointment</a></li>
-                        <li><a href="#resources">Patient Resources</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a class="f-active" href="#">Privacy Policy (HIPAA)</a></li>
-                        <li><a class="f-active" href="#">Terms of Use</a></li>
-                        <li><a class="f-active" href="#">Accessibility</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="tel:+12465379259">(246) 537-9259</a></li>
-                        <li><a href="mailto:tridentmedical246@gmail.com">tridentmedical246@gmail.com</a></li>
-                        <li><a href="#contact">Directions</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 Trident Medical. All Rights Reserved.</p>
+        <div class="footer-bottom container">
+            <p>&copy; El Jestic Home Health Services. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#cookies">Cookie Policy</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Navigation Toggle
-        const mobileNavToggle = document.getElementById('mobileNavToggle');
-        const nav = document.getElementById('mainNav');
-        const body = document.body;
-
-        mobileNavToggle.addEventListener('click', () => {
-            const isOpen = nav.classList.contains('active');
-            nav.classList.toggle('active');
-            mobileNavToggle.classList.toggle('active');
-            body.classList.toggle('nav-open');
-            mobileNavToggle.setAttribute('aria-expanded', !isOpen);
-        });
-
-        // Close mobile nav when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (nav.classList.contains('active')) {
-                    nav.classList.remove('active');
-                    mobileNavToggle.classList.remove('active');
-                    body.classList.remove('nav-open');
-                    mobileNavToggle.setAttribute('aria-expanded', false);
-                }
-            });
-        });
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Testimonial Slider
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.testimonial-slide');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) slide.classList.add('active');
-            });
+        // Debounce function
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
         }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
+        /* Header shadow on scroll */
+        const header = document.querySelector(".site-header");
+        const setHeaderBorder = () => {
+          const scrolled = window.scrollY > 2;
+          header.style.boxShadow = scrolled ? '0 4px 6px rgba(0, 0, 0, 0.1)' : 'none';
+        };
+        window.addEventListener("scroll", debounce(setHeaderBorder, 50), { passive: true });
+        setHeaderBorder();
 
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
-
-        // Auto-slide every 5 seconds
-        setInterval(nextSlide, 5000);
-
-        // Open Day Side Banner Toggle
-        const openDayToggle = document.getElementById('openDayToggle');
-        const openDayBanner = document.getElementById('openDayBanner');
-        const closeBanner = document.getElementById('closeBanner');
-
-        // Banner is visible by default for larger screens
-        if (window.innerWidth >= 992) {
-            openDayBanner.classList.remove('hidden');
-        }
-
-        openDayToggle.addEventListener('click', () => {
-            openDayBanner.classList.toggle('hidden');
-            const icon = openDayToggle.querySelector('i');
-            if (openDayBanner.classList.contains('hidden')) {
-                icon.className = 'fas fa-plus-circle';
-                openDayToggle.title = 'Show Open Day Banner';
+        /* Mobile nav toggle with slider */
+        const navToggle = document.querySelector(".nav-toggle");
+        const navList = document.getElementById("primary-menu");
+        const backdrop = document.querySelector(".nav-backdrop");
+        const navClose = document.querySelector(".nav-close");
+        if (navToggle && navList && backdrop) {
+          navToggle.addEventListener("click", () => {
+            const isOpen = navList.classList.contains("open");
+            if (isOpen) {
+              navList.classList.remove("open");
+              backdrop.style.display = "none";
+              navToggle.setAttribute("aria-expanded", "false");
+              navToggle.classList.remove("open");
             } else {
-                icon.className = 'fas fa-times';
-                openDayToggle.title = 'Hide Open Day Banner';
+              navList.classList.add("open");
+              backdrop.style.display = "block";
+              navToggle.setAttribute("aria-expanded", "true");
+              navToggle.classList.add("open");
             }
-        });
+          });
 
-        closeBanner.addEventListener('click', () => {
-            openDayBanner.classList.add('hidden');
-            openDayToggle.querySelector('i').className = 'fas fa-plus-circle';
-            openDayToggle.title = 'Show Open Day Banner';
-        });
+          // Close on backdrop click
+          backdrop.addEventListener("click", () => {
+            navList.classList.remove("open");
+            backdrop.style.display = "none";
+            navToggle.setAttribute("aria-expanded", "false");
+            navToggle.classList.remove("open");
+          });
 
-        // Video Card Toggle
-        const videoIcon1 = document.getElementById('videoIcon1');
-        const videoIcon2 = document.getElementById('videoIcon2');
-        const videoCard = document.getElementById('videoCard');
+          // Close on nav link click
+          const navLinks = navList.querySelectorAll("a");
+          navLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+              navList.classList.remove("open");
+              backdrop.style.display = "none";
+              navToggle.setAttribute("aria-expanded", "false");
+              navToggle.classList.remove("open");
+            });
+          });
 
-        videoIcon1.addEventListener('click', () => {
-            videoCard.classList.toggle('hidden');
-        });
+          if (navClose) {
+            navClose.addEventListener('click', () => {
+              navList.classList.remove('open');
+              backdrop.style.display = 'none';
+              navToggle.setAttribute('aria-expanded', 'false');
+              navToggle.classList.remove('open');
+            });
+          }
 
-        videoIcon2.addEventListener('click', () => {
-            videoCard.classList.toggle('hidden');
-        });
+          // Close when clicking anywhere on the slider (except links or close button)
+          navList.addEventListener("click", (e) => {
+            if (!e.target.closest('a') && !e.target.closest('.nav-close')) {
+              navList.classList.remove("open");
+              backdrop.style.display = "none";
+              navToggle.setAttribute("aria-expanded", "false");
+              navToggle.classList.remove("open");
+            }
+          });
+        }
+
+        /* Update footer year */
+        const yearEl = document.querySelector(".footer-bottom p");
+        if (yearEl) {
+            yearEl.innerHTML = yearEl.innerHTML.replace(/202[0-9]*/, new Date().getFullYear());
+        }
     </script>
 </body>
 </html>
