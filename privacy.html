@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | El Jestic Home Health Services</title>
+    <style>
+        :root {
+          --bg: #ffffff;
+          --text: #000000;
+          --text-muted: #333333;
+          --accent-pink: #FF69B4;
+          --accent-blue: #1E90FF;
+          --pink-light: #FFC0CB;
+          --blue-light: #B0E0E6;
+          --border: #e0e0e0;
+          --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+          --mono: "Space Mono", monospace;
+          --font-heading: 'Playfair Display', serif;
+          --font-body: 'Poppins', sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+          margin: 0;
+          color: var(--text);
+          background: var(--bg);
+          font-family: var(--font-body);
+          line-height: 1.6;
+          text-rendering: optimizeLegibility;
+          overflow-x: hidden;
+        }
+
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .narrow { max-width: 800px; }
+
+        /* Top Bar */
+        .top-bar {
+          background: var(--accent-pink);
+          color: var(--bg);
+          padding: 10px 0;
+          font-size: 14px;
+        }
+        .top-bar-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .contact-info span {
+          margin-right: 20px;
+        }
+        .top-bar-links {
+          display: flex;
+          gap: 20px;
+        }
+        .top-bar-links a {
+          color: var(--bg);
+          text-decoration: none;
+          transition: opacity 0.3s ease;
+        }
+        .top-bar-links a:hover { opacity: 0.8; }
+
+        /* Header */
+        .site-header {
+          position: sticky; top: 0; z-index: 10;
+          background: var(--bg);
+          box-shadow: var(--shadow);
+        }
+        .header-inner {
+          display: flex; justify-content: space-between; align-items: center; padding: 15px 0;
+        }
+        .brand {
+          font-family: var(--mono); font-weight: 700; font-size: 24px; text-decoration: none; color: var(--text);
+          letter-spacing: 0.02em;
+        }
+        .brand img {
+          height: auto;
+          max-width: 150px;
+        }
+        .nav-main { display: flex; gap: 30px; list-style: none; padding: 0; margin: 0; }
+        .nav-main a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 160ms ease; }
+        .nav-main a:hover, .nav-main a:focus { color: var(--accent-pink); }
+        .nav-toggle { display: none; background: transparent; border: none; }
+
+        /* Main Content */
+        .page-main { padding: 60px 0; }
+        .page-title {
+          font-size: 2.8rem;
+          text-align: center;
+          margin: 0 0 40px;
+          font-family: var(--font-heading);
+          color: var(--text);
+        }
+        .policy-content {
+          background: var(--bg);
+          padding: 40px;
+          border: 2px solid var(--accent-blue);
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+        }
+        .policy-content h1, .policy-content h2 {
+          font-family: var(--font-heading);
+          color: var(--accent-blue);
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+        }
+        .policy-content h1 {
+          font-size: 2.2rem;
+          text-align: center;
+          margin-bottom: 1.5rem;
+        }
+        .policy-content h2 {
+          font-size: 1.6rem;
+        }
+        .policy-content p {
+          margin-bottom: 1.2rem;
+        }
+        .policy-content ul {
+          margin: 1rem 0;
+          padding-left: 1.5rem;
+        }
+        .policy-content li {
+          margin-bottom: 0.6rem;
+        }
+        .last-updated {
+          text-align: center;
+          font-style: italic;
+          color: var(--text-muted);
+          margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        .site-footer { background: var(--text); color: var(--bg); padding: 60px 0 20px; }
+        .footer-inner {
+          display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;
+        }
+        .footer-section h4 { font-size: 1.2rem; margin-bottom: 20px; color: var(--accent-pink); font-family: var(--font-heading); }
+        .footer-section ul { list-style: none; padding: 0; }
+        .footer-section ul li { margin-bottom: 8px; }
+        .footer-section a { color: var(--bg); text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--accent-pink); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-legal a { color: var(--bg); margin-left: 20px; text-decoration: none; }
+        .footer-legal a:hover { color: var(--accent-pink); }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span>📞 +1 246 416-4875</span>
+                <span>✉️ care@eljestic.com</span>
+            </div>
+            <div class="top-bar-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="brand">El Jestic</a>
+            <nav>
+                <ul class="nav-main">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-main">
+        <div class="container narrow">
+            <h1 class="page-title">Privacy Policy</h1>
+            <div class="policy-content">
+                <p class="last-updated">Last Updated: [Insert Date]</p>
+
+                <p>Eljestic Home Care Services ("the Company," "we," "us," or "our") is committed to protecting the privacy and security of the personal data of our website visitors, prospective clients, and potential employees. This Privacy Policy outlines how we collect, use, disclose, and protect your personal information in accordance with the Barbados Data Protection Act, 2019-29.</p>
+                <p>By using our website, eljestic.com, you consent to the data practices described in this policy.</p>
+
+                <h2>1. Information We Collect</h2>
+                <p>We may collect the following types of personal information from you:</p>
+
+                <h3>Information You Provide Directly:</h3>
+                <ul>
+                    <li><strong>Contact Information:</strong> Name, email address, phone number, and physical address.</li>
+                    <li><strong>Client Inquiry Information:</strong> Details about the type of home care services you or a loved one are seeking, health conditions, living situation, and any other information you voluntarily provide to help us understand your needs.</li>
+                    <li><strong>Employment Application Information:</strong> Your resume, cover letter, work history, educational background, and any other information required to assess your suitability for a role with us.</li>
+                </ul>
+
+                <h3>Information We Collect Automatically:</h3>
+                <ul>
+                    <li><strong>Usage Data:</strong> We may collect information about your interaction with our website, such as your IP address, browser type, operating system, pages viewed, and the time and date of your visit. This data is collected using cookies and similar technologies to help us analyze website traffic and improve user experience.</li>
+                </ul>
+
+                <h2>2. How We Use Your Information</h2>
+                <p>We use the information we collect for the following purposes:</p>
+                <ul>
+                    <li>To Respond to Inquiries: To contact you and provide information about our services.</li>
+                    <li>To Process Applications: To evaluate your suitability for a potential role with us.</li>
+                    <li>To Improve Our Services: To analyze website usage, understand client needs, and enhance our services and marketing efforts.</li>
+                    <li>For Communication: To send you updates, promotions, or other relevant information, but only if you have consented to receive such communications.</li>
+                    <li>For Legal and Compliance Purposes: To comply with legal obligations, respond to lawful requests from authorities, and protect our rights and property.</li>
+                </ul>
+
+                <h2>3. Disclosure of Your Information</h2>
+                <p>We do not sell, rent, or trade your personal information. We may disclose your information to:</p>
+                <ul>
+                    <li><strong>Service Providers:</strong> Third-party companies that provide services on our behalf, such as website hosting, analytics, and email delivery. These providers are obligated to protect your data and are only permitted to use it for the purposes we specify.</li>
+                    <li><strong>Legal Authorities:</strong> We may disclose your information if required by law, such as in response to a court order or legal process, or to protect our rights, safety, or the safety of others.</li>
+                </ul>
+
+                <h2>4. Your Rights Under the Barbados Data Protection Act</h2>
+                <p>In accordance with the Data Protection Act, you have the right to:</p>
+                <ul>
+                    <li><strong>Access:</strong> Request a copy of the personal information we hold about you.</li>
+                    <li><strong>Rectification:</strong> Request that we correct any inaccurate or incomplete data we have about you.</li>
+                    <li><strong>Erasure (Right to be Forgotten):</strong> Request the deletion of your personal data under certain conditions.</li>
+                    <li><strong>Restriction of Processing:</strong> Request that we limit the way we use your personal data.</li>
+                    <li><strong>Data Portability:</strong> Request a copy of your personal data in a machine-readable format to transfer it to another service.</li>
+                    <li><strong>Object to Processing:</strong> Object to the processing of your personal data for direct marketing or other purposes.</li>
+                </ul>
+                <p>To exercise any of these rights, please contact us using the information provided below.</p>
+
+                <h2>5. Data Security</h2>
+                <p>We take the security of your personal data seriously. We have implemented appropriate technical and organizational measures to protect your information from unauthorized access, use, disclosure, alteration, or destruction. However, no method of transmission over the internet or electronic storage is 100% secure.</p>
+
+                <h2>6. Retention of Data</h2>
+                <p>We will retain your personal information only for as long as is necessary to fulfill the purposes for which it was collected, including for legal, accounting, or reporting requirements.</p>
+
+                <h2>7. Changes to This Privacy Policy</h2>
+                <p>We may update this Privacy Policy from time to time to reflect changes in our practices or applicable laws. We will post any changes on this page and update the "Last Updated" date at the top of the policy.</p>
+
+                <h2>8. Contact Us</h2>
+                <p>If you have any questions or concerns about this Privacy Policy or our data practices, please contact us:</p>
+                <p><strong>Eljestic Home Care Services</strong><br>
+                Email: care@eljestic.com<br>
+                Phone: +1 246 416-4875<br>
+                Address: [Your Business Address in Barbados]</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-section">
+                <h4>El Jestic</h4>
+                <p>Providing compassionate home health services with a focus on dignity, independence, and joy.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="index.html#palliative">Palliative Care</a></li>
+                    <li><a href="index.html#post-op">Post-Operative Care</a></li>
+                    <li><a href="index.html#dementia">Dementia Care</a></li>
+                    <li><a href="index.html#elderly">Elderly Care</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="index.html#mission">Mission</a></li>
+                    <li><a href="index.html#story">Our Story</a></li>
+                    <li><a href="index.html#values">Values</a></li>
+                    <li><a href="index.html#careers">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>+1 246 416-4875</p>
+                <p>care@eljestic.com</p>
+                <p>Barbados • Serving clients at home across the island</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© <span id="current-year"></span> El Jestic Home Health Services. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Update year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

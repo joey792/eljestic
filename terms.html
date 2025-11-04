@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions | El Jestic Home Health Services</title>
+    <style>
+        :root {
+          --bg: #ffffff;
+          --text: #000000;
+          --text-muted: #333333;
+          --accent-pink: #FF69B4;
+          --accent-blue: #1E90FF;
+          --pink-light: #FFC0CB;
+          --blue-light: #B0E0E6;
+          --border: #e0e0e0;
+          --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+          --mono: "Space Mono", monospace;
+          --font-heading: 'Playfair Display', serif;
+          --font-body: 'Poppins', sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+          margin: 0;
+          color: var(--text);
+          background: var(--bg);
+          font-family: var(--font-body);
+          line-height: 1.6;
+          text-rendering: optimizeLegibility;
+          overflow-x: hidden;
+        }
+
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .narrow { max-width: 800px; }
+
+        /* Top Bar */
+        .top-bar {
+          background: var(--accent-pink);
+          color: var(--bg);
+          padding: 10px 0;
+          font-size: 14px;
+        }
+        .top-bar-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .contact-info span {
+          margin-right: 20px;
+        }
+        .top-bar-links {
+          display: flex;
+          gap: 20px;
+        }
+        .top-bar-links a {
+          color: var(--bg);
+          text-decoration: none;
+          transition: opacity 0.3s ease;
+        }
+        .top-bar-links a:hover { opacity: 0.8; }
+
+        /* Header */
+        .site-header {
+          position: sticky; top: 0; z-index: 10;
+          background: var(--bg);
+          box-shadow: var(--shadow);
+        }
+        .header-inner {
+          display: flex; justify-content: space-between; align-items: center; padding: 15px 0;
+        }
+        .brand {
+          font-family: var(--mono); font-weight: 700; font-size: 24px; text-decoration: none; color: var(--text);
+          letter-spacing: 0.02em;
+        }
+        .brand img {
+          height: auto;
+          max-width: 150px;
+        }
+        .nav-main { display: flex; gap: 30px; list-style: none; padding: 0; margin: 0; }
+        .nav-main a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 160ms ease; }
+        .nav-main a:hover, .nav-main a:focus { color: var(--accent-pink); }
+        .nav-toggle { display: none; background: transparent; border: none; }
+
+        /* Main Content */
+        .page-main { padding: 60px 0; }
+        .page-title {
+          font-size: 2.8rem;
+          text-align: center;
+          margin: 0 0 40px;
+          font-family: var(--font-heading);
+          color: var(--text);
+        }
+        .policy-content {
+          background: var(--bg);
+          padding: 40px;
+          border: 2px solid var(--accent-blue);
+          border-radius: 12px;
+          box-shadow: var(--shadow);
+        }
+        .policy-content h1, .policy-content h2 {
+          font-family: var(--font-heading);
+          color: var(--accent-blue);
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+        }
+        .policy-content h1 {
+          font-size: 2.2rem;
+          text-align: center;
+          margin-bottom: 1.5rem;
+        }
+        .policy-content h2 {
+          font-size: 1.6rem;
+        }
+        .policy-content p {
+          margin-bottom: 1.2rem;
+        }
+        .policy-content ul {
+          margin: 1rem 0;
+          padding-left: 1.5rem;
+        }
+        .policy-content li {
+          margin-bottom: 0.6rem;
+        }
+        .intro-notice {
+          background: #f0f8ff;
+          border-left: 4px solid var(--accent-blue);
+          padding: 15px;
+          margin-bottom: 2rem;
+          font-weight: 500;
+        }
+
+        /* Footer */
+        .site-footer { background: var(--text); color: var(--bg); padding: 60px 0 20px; }
+        .footer-inner {
+          display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;
+        }
+        .footer-section h4 { font-size: 1.2rem; margin-bottom: 20px; color: var(--accent-pink); font-family: var(--font-heading); }
+        .footer-section ul { list-style: none; padding: 0; }
+        .footer-section ul li { margin-bottom: 8px; }
+        .footer-section a { color: var(--bg); text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--accent-pink); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-legal a { color: var(--bg); margin-left: 20px; text-decoration: none; }
+        .footer-legal a:hover { color: var(--accent-pink); }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span>📞 +1 246 416-4875</span>
+                <span>✉️ care@eljestic.com</span>
+            </div>
+            <div class="top-bar-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="brand">El Jestic</a>
+            <nav>
+                <ul class="nav-main">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-main">
+        <div class="container narrow">
+            <h1 class="page-title">Terms and Conditions</h1>
+            <div class="policy-content">
+                <div class="intro-notice">
+                    <p>Welcome to Eljestic.com. By accessing or using our website, you agree to be bound by the following Terms and Conditions. Please read them carefully.</p>
+                </div>
+
+                <h2>1. Services Provided</h2>
+                <p>Eljestic Home Care Services ("the Company") provides home help services in Barbados, including but not limited to personal care, companionship, post-operative care, dementia care, and home nursing. The information on this website is for marketing purposes only and does not constitute a binding offer of services. All services are subject to a formal agreement between the client and the Company, which will outline specific terms, service plans, and fees.</p>
+
+                <h2>2. Use of Website</h2>
+                <p>This website is intended for individuals and families seeking home care services in Barbados and for individuals interested in employment opportunities with Eljestic. You agree to use this site only for its intended purpose and not for any unlawful or prohibited activities.</p>
+
+                <h2>3. Client and Employee Applications</h2>
+                <ul>
+                    <li><strong>Client Inquiries:</strong> By submitting an inquiry or filling out a form on this website, you agree to provide accurate and complete information. This information will be used by the Company to assess your needs and contact you to discuss potential service plans.</li>
+                    <li><strong>Employment Applications:</strong> By submitting an employment application, you certify that all information provided is true and accurate. Submitting an application does not guarantee employment. The Company reserves the right to conduct background checks and verify all information provided.</li>
+                </ul>
+
+                <h2>4. Intellectual Property</h2>
+                <p>All content on this website, including text, graphics, logos, images, and software, is the property of Eljestic Home Care Services or its content suppliers and is protected by copyright laws. You may not reproduce, distribute, or create derivative works from any content on this site without our express written permission.</p>
+
+                <h2>5. Limitation of Liability</h2>
+                <p>The information on this website is provided "as is." While we strive to ensure the accuracy of the content, we make no warranties, express or implied, regarding its completeness or reliability. Eljestic Home Care Services will not be liable for any damages arising from the use of this website.</p>
+
+                <h2>6. Third-Party Links</h2>
+                <p>This website may contain links to third-party websites. These links are provided for your convenience only. We do not endorse the content of these third-party sites and are not responsible for their terms of use or privacy practices.</p>
+
+                <h2>7. Governing Law</h2>
+                <p>These Terms and Conditions are governed by the laws of Barbados. Any disputes relating to these terms shall be subject to the exclusive jurisdiction of the courts of Barbados.</p>
+
+                <h2>8. Changes to Terms</h2>
+                <p>We reserve the right to modify these Terms and Conditions at any time. Any changes will be posted on this page, and your continued use of the website after such changes constitutes your acceptance of the new terms.</p>
+
+                <h2>9. Contact Information</h2>
+                <p>If you have any questions about these Terms and Conditions, please contact us at care@eljestic.com or +1 246 416-4875.</p>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid #ddd;">
+
+                <p style="text-align: center; font-weight: 500;">
+                    By using Eljestic.com, you acknowledge that you have read, understood, and agreed to these Terms and Conditions.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-section">
+                <h4>El Jestic</h4>
+                <p>Providing compassionate home health services with a focus on dignity, independence, and joy.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="index.html#palliative">Palliative Care</a></li>
+                    <li><a href="index.html#post-op">Post-Operative Care</a></li>
+                    <li><a href="index.html#dementia">Dementia Care</a></li>
+                    <li><a href="index.html#elderly">Elderly Care</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="index.html#mission">Mission</a></li>
+                    <li><a href="index.html#story">Our Story</a></li>
+                    <li><a href="index.html#values">Values</a></li>
+                    <li><a href="index.html#careers">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>+1 246 416-4875</p>
+                <p>care@eljestic.com</p>
+                <p>Barbados • Serving clients at home across the island</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© <span id="current-year-2"></span> El Jestic Home Health Services. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Update year
+        document.getElementById('current-year-2').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
